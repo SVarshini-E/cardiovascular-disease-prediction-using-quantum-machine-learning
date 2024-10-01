@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Prediction</title>
+    <link rel="stylesheet" href="{{url_for('static',
+    filename='css/style.css')}}" />
+</head>
+<body>
+        <center>
+    
+        <h2>The cardiovascular disease prediction</h2>
+        <div class="form-container">
+        <form action="/predict" method="POST">
+
+            <div class="form-group">
+            <label for="ap_hi">Systolic blood pressure </label>
+            <input type="text" name="f1" placeholder="ap_hi" required><br><br>
+        </div>
+        <div class="form-group">
+            <label for="ap_lo">Diastolic blood pressure </label>
+            <input type="text" name="f2" placeholder="ap_lo" required><br><br>
+        </div>
+        <div class="form-group">
+            <label for="cholesterol">Cholesterol Level</label>
+            <select name="f3" id="cholesterol" required>
+                <option value="1">Normal</option>
+                <option value="2">Above Normal</option>
+                <option value="3">Well Above Normal</option>
+            </select><br><br>
+        </div>
+        <div class="form-group">
+            <label for="Glucose">Glucose Level</label>
+            <select name="f4" id="cholesterol" required>
+                <option value="1">Normal</option>
+                <option value="2">Above Normal</option>
+                <option value="3">Well Above Normal</option>
+            </select><br><br>
+        </div>
+        <div class="form-group"> 
+
+            <label for="Smoke">Do you Smoke?</label>
+            <input type="text" name="f5" placeholder="Smoke" required><br><br>
+        </div> 
+        <div class="form-group"> 
+            <label for="alchol">Do you consume Alchol?</label>
+            <input type="text" name="f6" placeholder="alchol" required><br><br>
+        </div>
+            <div class="submit-container">
+            <button type="submit">Predict</button>
+            </div>
+        </form>
+    </div> 
+        <br>
+        {% if prediction_text%}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+
+        <img src="{{url_for('static',
+        filename='images/cardio_image.webp')}}" alt="cardio image">
+        </center>
+    
+</body>
